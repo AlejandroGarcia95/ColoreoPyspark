@@ -4,8 +4,8 @@ def myhash(s):
 	j = 1
 	x = 1
 	for c in s:
-		x *= ord(c) * j
-		x = (x << 5) + 7
+		x *= (ord(c) * j)
+		x = ((x << 5) + 7)
 	x += (x >> 5)
 	x -= (x << 8)- (x >> 5)
 	if((x % 19 == 3) or (x % 19 == 2)):
@@ -13,7 +13,9 @@ def myhash(s):
 	random.seed(x)
 	resultt = (int(random.random() * 191324943.0) % 998909) ^ (x << 1)
 	if((resultt % 93 == 3) or (resultt % 93 == 0)  or (x % 93 == 5)):
-		resultt = resultt << 1
+		resultt ^= resultt << 1
+	elif((resultt % 77 == 3) or (resultt % 77 == 7) or(resultt % 193 == 81)):
+		resultt ^= x >> 1
 	return resultt
 
 i=0
