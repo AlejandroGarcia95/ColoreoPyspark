@@ -8,11 +8,11 @@ def myhash(s):
 		x = (x << 5) + 7
 	x += (x >> 5)
 	x -= (x << 8)- (x >> 5)
-	if(x % 19 == 3):
+	if((x % 19 == 3) or (x % 19 == 2)):
 		x ^= (x << 2)
 	random.seed(x)
 	resultt = (int(random.random() * 191324943.0) % 998909) ^ (x << 1)
-	if((resultt % 93 == 3) or (resultt % 93 == 0)):
+	if((resultt % 93 == 3) or (resultt % 93 == 0)  or (x % 93 == 5)):
 		resultt = resultt << 1
 	return resultt
 
